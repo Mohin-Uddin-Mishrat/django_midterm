@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+<section class=" container mx-auto w-25 my-5">
+  <a href="{% url 'changeuser' %}" class="btn btn-primary mx-4"> Edit Profile</a>
+
+  <div class=" my-5">
+    
+    <a  class="btn btn-primary mx-4"> All Orders</a>
+  </div>
+
+
+</section>
+
+
+
+<div class="container px-4 text-center">
+  <div class="row ">
+    {% for i in car %}
+    <div class="col">
+      <div class="card"  style="width: 18rem;">
+        <img src="{{i.car.image.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">model: {{i.car.name}}</h5>
+          <h5 class="card-title"> brand:{{i.car.brand.name}}</h5>
+          <p class="card-text">{{ i.car.descrption|truncatewords:3 }}</p>
+          <h5 class="card-title">{{i.car.price}}</h5>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+
+{% endblock %}
